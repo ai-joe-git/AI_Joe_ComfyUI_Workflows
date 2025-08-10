@@ -1,0 +1,1664 @@
+{
+  "id": "ec7da562-7e21-4dac-a0d2-f4441e1efd3b",
+  "revision": 0,
+  "last_node_id": 88,
+  "last_link_id": 157,
+  "nodes": [
+    {
+      "id": 63,
+      "type": "Note",
+      "pos": [
+        20,
+        720
+      ],
+      "size": [
+        370,
+        120
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Video Size",
+      "properties": {},
+      "widgets_values": [
+        "By default, we set the video to a smaller size for users with low VRAM. If you have enough VRAM, you can change the size"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1657.0252685546875,
+        -42.49197006225586
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 124
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 141
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            131,
+            144
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 57,
+      "type": "KSamplerAdvanced",
+      "pos": [
+        947.5302124023438,
+        -68.99319458007812
+      ],
+      "size": [
+        304.748046875,
+        546
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 125
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 127
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 129
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 126
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            113
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "KSamplerAdvanced"
+      },
+      "widgets_values": [
+        "enable",
+        42,
+        "fixed",
+        4,
+        1,
+        "euler",
+        "simple",
+        0,
+        2,
+        "enable"
+      ]
+    },
+    {
+      "id": 67,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        382.62860107421875,
+        -65.7417221069336
+      ],
+      "size": [
+        445.0632019042969,
+        82
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 137
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            134,
+            146
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.49",
+        "Node name for S&R": "LoraLoaderModelOnly"
+      },
+      "widgets_values": [
+        "wan_loras\\Wan2.2-Lightning_T2V-v1.1-A14B-4steps-lora_HIGH_fp16.safetensors",
+        1.0000000000000002
+      ]
+    },
+    {
+      "id": 68,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        387.0370178222656,
+        70.11335754394531
+      ],
+      "size": [
+        436.1445617675781,
+        82
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 138
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            136,
+            147
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.49",
+        "Node name for S&R": "LoraLoaderModelOnly"
+      },
+      "widgets_values": [
+        "wan_loras\\Wan2.2-Lightning_T2V-v1.1-A14B-4steps-lora_LOW_fp16.safetensors",
+        1.0000000000000002
+      ]
+    },
+    {
+      "id": 60,
+      "type": "CreateVideo",
+      "pos": [
+        1653.5601806640625,
+        79.06910705566406
+      ],
+      "size": [
+        270,
+        78
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 131
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            132,
+            154
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "CreateVideo"
+      },
+      "widgets_values": [
+        16
+      ]
+    },
+    {
+      "id": 76,
+      "type": "RIFE VFI",
+      "pos": [
+        2023.2718505859375,
+        -65.71619415283203
+      ],
+      "size": [
+        289.6578063964844,
+        198
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "frames",
+          "type": "IMAGE",
+          "link": 144
+        },
+        {
+          "name": "optional_interpolation_states",
+          "shape": 7,
+          "type": "INTERPOLATION_STATES",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            143
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-frame-interpolation",
+        "ver": "1.0.7",
+        "Node name for S&R": "RIFE VFI",
+        "widget_ue_connectable": {
+          "ckpt_name": true,
+          "clear_cache_after_n_frames": true,
+          "multiplier": true,
+          "fast_mode": true,
+          "ensemble": true,
+          "scale_factor": true
+        }
+      },
+      "widgets_values": [
+        "rife49.pth",
+        34,
+        2,
+        false,
+        true,
+        2
+      ]
+    },
+    {
+      "id": 78,
+      "type": "easy cleanGpuUsed",
+      "pos": [
+        669.1283569335938,
+        221.16607666015625
+      ],
+      "size": [
+        157.38925170898438,
+        26
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 147
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-easy-use",
+        "ver": "1.3.1",
+        "Node name for S&R": "easy cleanGpuUsed"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 54,
+      "type": "ModelSamplingSD3",
+      "pos": [
+        407.70269775390625,
+        207.22930908203125
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 134
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            125
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "ModelSamplingSD3"
+      },
+      "widgets_values": [
+        5.000000000000001
+      ]
+    },
+    {
+      "id": 79,
+      "type": "easy cleanGpuUsed",
+      "pos": [
+        669.1283569335938,
+        360.1477355957031
+      ],
+      "size": [
+        157.38925170898438,
+        26
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 146
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-easy-use",
+        "ver": "1.3.1",
+        "Node name for S&R": "easy cleanGpuUsed"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 80,
+      "type": "easy cleanGpuUsed",
+      "pos": [
+        927.7681274414062,
+        719.8654174804688
+      ],
+      "size": [
+        157.38925170898438,
+        26
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 148
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-easy-use",
+        "ver": "1.3.1",
+        "Node name for S&R": "easy cleanGpuUsed"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 81,
+      "type": "easy cleanGpuUsed",
+      "pos": [
+        2805.13720703125,
+        -0.3129982054233551
+      ],
+      "size": [
+        157.38925170898438,
+        26
+      ],
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 149
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-easy-use",
+        "ver": "1.3.1",
+        "Node name for S&R": "easy cleanGpuUsed"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 69,
+      "type": "Note",
+      "pos": [
+        1144.650634765625,
+        565.576171875
+      ],
+      "size": [
+        379.72747802734375,
+        135.40545654296875
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "Set steps to 4, split step to 2.\n\nShift to 5\n\nPlease let me know if you run into any issues.\n\nhttps://github.com/ModelTC/Wan2.2-Lightning/issues/3\nhttps://github.com/ModelTC/Wan2.2-Lightning"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 55,
+      "type": "ModelSamplingSD3",
+      "pos": [
+        404.72039794921875,
+        328.50225830078125
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 136
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            123
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "ModelSamplingSD3"
+      },
+      "widgets_values": [
+        5.000000000000001
+      ]
+    },
+    {
+      "id": 77,
+      "type": "easy cleanGpuUsed",
+      "pos": [
+        1665.783935546875,
+        -145.24046325683594
+      ],
+      "size": [
+        157.38925170898438,
+        26
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 145
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-easy-use",
+        "ver": "1.3.1",
+        "Node name for S&R": "easy cleanGpuUsed"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 86,
+      "type": "easy cleanGpuUsed",
+      "pos": [
+        1943.7474365234375,
+        -183.8878936767578
+      ],
+      "size": [
+        157.38925170898438,
+        26
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 154
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-easy-use",
+        "ver": "1.3.1",
+        "Node name for S&R": "easy cleanGpuUsed"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 74,
+      "type": "CreateVideo",
+      "pos": [
+        2428.32568359375,
+        47.25296401977539
+      ],
+      "size": [
+        270,
+        78
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 143
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            142,
+            149
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "CreateVideo"
+      },
+      "widgets_values": [
+        32
+      ]
+    },
+    {
+      "id": 82,
+      "type": "OllamaConnectivityV2",
+      "pos": [
+        -1209.5738525390625,
+        288.21484375
+      ],
+      "size": [
+        351.8759460449219,
+        210.50225830078125
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 2,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "connection",
+          "type": "OLLAMA_CONNECTIVITY",
+          "links": [
+            150
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-ollama",
+        "ver": "2.0.5",
+        "Node name for S&R": "OllamaConnectivityV2"
+      },
+      "widgets_values": [
+        "http://192.168.0.210:11434",
+        "gemma3:latest",
+        5,
+        "minutes",
+        null
+      ]
+    },
+    {
+      "id": 85,
+      "type": "ShowText|LP",
+      "pos": [
+        -1213.090576171875,
+        -55.170108795166016
+      ],
+      "size": [
+        353.96331787109375,
+        280.6483154296875
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 15,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 153
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "Show Text [LP] Thinking",
+      "properties": {
+        "cnr_id": "comfyui-levelpixel",
+        "ver": "1.2.8",
+        "Node name for S&R": "ShowText|LP"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 88,
+      "type": "OllamaOptionsV2",
+      "pos": [
+        -1515.3197021484375,
+        -62.874542236328125
+      ],
+      "size": [
+        286.103515625,
+        754
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "options",
+          "type": "OLLAMA_OPTIONS",
+          "links": [
+            156
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-ollama",
+        "ver": "2.0.7",
+        "Node name for S&R": "OllamaOptionsV2"
+      },
+      "widgets_values": [
+        false,
+        0,
+        false,
+        0.1,
+        false,
+        5,
+        false,
+        2048,
+        false,
+        64,
+        false,
+        1.1,
+        false,
+        0.8,
+        true,
+        1001115933,
+        "fixed",
+        false,
+        "",
+        false,
+        1,
+        false,
+        -1,
+        false,
+        40,
+        false,
+        0.9,
+        false,
+        0,
+        true
+      ]
+    },
+    {
+      "id": 58,
+      "type": "KSamplerAdvanced",
+      "pos": [
+        1302.703857421875,
+        -70.93173217773438
+      ],
+      "size": [
+        296.40533447265625,
+        546
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 123
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 128
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 130
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 113
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            124,
+            145
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "KSamplerAdvanced"
+      },
+      "widgets_values": [
+        "disable",
+        42,
+        "fixed",
+        4,
+        1,
+        "euler",
+        "simple",
+        2,
+        4,
+        "disable"
+      ]
+    },
+    {
+      "id": 84,
+      "type": "ShowText|LP",
+      "pos": [
+        -832.3995361328125,
+        -52.1449089050293
+      ],
+      "size": [
+        474.3646545410156,
+        650.0277099609375
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 14,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 151
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "Show Text [LP] Positive prompt",
+      "properties": {
+        "cnr_id": "comfyui-levelpixel",
+        "ver": "1.2.8",
+        "Node name for S&R": "ShowText|LP"
+      },
+      "widgets_values": [
+        "A weathered, deep-blue 1968 Dodge Charger sits stubbornly in the center of a sun-drenched stretch of Route 66, dust motes dancing in the intense afternoon light. The driver, a man with a hardened expression and a worn leather jacket, steps from the car, clutching a classic revolver. He advances, confronting an unseen police officer with a defiant posture. Slow, deliberate motion as he takes a step, his hand instinctively hovering near the weapon. The camera begins with a steady, wide shot establishing the scene, a subtle tracking following as he approaches. Then a slow, deliberate dolly in, intensifying the confrontation with a close three-quarter profile of the driver. Soft, diffused sunlight from the side, creating a shallow depth of field. Medium lens, shallow depth of field, color grade with warm, faded tones, a hint of documentary realism; centered composition with a slight drift to the short side; muted, 60s Americana style."
+      ]
+    },
+    {
+      "id": 83,
+      "type": "OllamaGenerateV2",
+      "pos": [
+        -1821.2266845703125,
+        -56.01766586303711
+      ],
+      "size": [
+        254.6436004638672,
+        730.3681030273438
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 9,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "connectivity",
+          "shape": 7,
+          "type": "OLLAMA_CONNECTIVITY",
+          "link": 150
+        },
+        {
+          "name": "options",
+          "shape": 7,
+          "type": "OLLAMA_OPTIONS",
+          "link": 156
+        },
+        {
+          "name": "images",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "context",
+          "shape": 7,
+          "type": "OLLAMA_CONTEXT",
+          "link": null
+        },
+        {
+          "name": "meta",
+          "shape": 7,
+          "type": "OLLAMA_META",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "STRING",
+          "links": [
+            151
+          ]
+        },
+        {
+          "name": "thinking",
+          "type": "STRING",
+          "links": [
+            153
+          ]
+        },
+        {
+          "name": "context",
+          "type": "OLLAMA_CONTEXT",
+          "links": null
+        },
+        {
+          "name": "meta",
+          "type": "OLLAMA_META",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-ollama",
+        "ver": "2.0.5",
+        "Node name for S&R": "OllamaGenerateV2"
+      },
+      "widgets_values": [
+        "Transform a short user idea into a polished, production-ready positive prompt for Wan-style text-to-video that adheres to the Advanced Formula: Subject(Description) + Scene(Description) + Motion(Description) + Aesthetic Control + Stylization.\n\nInstructions:\n\nExtract and structure from the user text: subject(s), action(s), setting, time-of-day, mood/tone, key props, and intended style; expand minimally to ensure cinematic specificity without adding new story beats not implied in the input.\n\nCompose one paragraph, 120–200 words, in this implicit flow:\n\nSubject and action focus, with a compact subject description.\n\nScene description and atmosphere (lighting, time, weather, era).\n\nMotion description: specify amplitude/speed/tempo for subject and scene motion.\n\nCamera plan: choose 1–2 beats (e.g., dolly in, pan right, tracking, arc), coherent with the action.\n\nAesthetic Control: weave in concise tags from Light Source, Lighting Type, Time of Day, Shot Size, Composition, Lens, Color Tone, and optionally Character Emotion.\n\nStylization: include a single style touch (e.g., documentary realism, cyberpunk, watercolor) if implied or beneficial; keep subtle and unified.\n\nKeep language concrete, filmic, model-agnostic; do not output negatives, sampler names, seeds, steps, aspect ratios, or model names.\n\nPrefer strong nouns/verbs over adjective stacks; avoid enumerations or shot lists.\n\nDefaults when the input is very brief:\n\nUse safe cinematic defaults: naturalistic lighting, subtle camera glide, realistic motion, medium lens, neutral color grade; keep the style grounded unless the input suggests otherwise.\n\nExample style (not content):\nAt dawn on a misted lakeshore, a lone rower in a weathered skiff pulls through glassy water, breath steady and focused. Soft, diffused sunrise light rims the oars as ripples expand in concentric rings. Start on a medium-wide as the camera tracks parallel, then ease into a slow dolly to a close three-quarter profile. Motion is unhurried and deliberate; droplets arc from each stroke. Soft lighting, low-contrast palette with cool blues and gentle warms; center composition shifting to short-side; medium lens; restrained, documentary realism.",
+        "the driver of a blue muscle car in road 66 style stopped in the middle of the road get out of the car confronting the police with his gun",
+        false,
+        false,
+        "text"
+      ]
+    },
+    {
+      "id": 59,
+      "type": "EmptyHunyuanLatentVideo",
+      "pos": [
+        49.93929672241211,
+        527.2329711914062
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            126
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "EmptyHunyuanLatentVideo"
+      },
+      "widgets_values": [
+        768,
+        512,
+        65,
+        1
+      ]
+    },
+    {
+      "id": 72,
+      "type": "VaeGGUF",
+      "pos": [
+        75.52513122558594,
+        362.9561767578125
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            141
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "gguf",
+        "ver": "2.3.5",
+        "Node name for S&R": "VaeGGUF"
+      },
+      "widgets_values": [
+        "pig_wan_vae_fp32-f16.gguf"
+      ]
+    },
+    {
+      "id": 73,
+      "type": "ClipLoaderGGUF",
+      "pos": [
+        72.10484313964844,
+        191.877197265625
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            139,
+            140
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "gguf",
+        "ver": "2.3.5",
+        "Node name for S&R": "ClipLoaderGGUF"
+      },
+      "widgets_values": [
+        "umt5-xxl-encoder-q4_k_m.gguf",
+        "wan",
+        "cpu"
+      ]
+    },
+    {
+      "id": 71,
+      "type": "LoaderGGUF",
+      "pos": [
+        57.08055114746094,
+        76.73910522460938
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            138
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "gguf",
+        "ver": "2.3.5",
+        "Node name for S&R": "LoaderGGUF"
+      },
+      "widgets_values": [
+        "wan2.2-t2v-14b-low-noise-q4_k_m.gguf"
+      ]
+    },
+    {
+      "id": 70,
+      "type": "LoaderGGUF",
+      "pos": [
+        73.58332824707031,
+        -47.848262786865234
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            137
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "gguf",
+        "ver": "2.3.5",
+        "Node name for S&R": "LoaderGGUF"
+      },
+      "widgets_values": [
+        "wan2.2-t2v-14b-high-noise-q4_k_m.gguf"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        447.1744384765625,
+        882.508544921875
+      ],
+      "size": [
+        425.27801513671875,
+        180.6060791015625
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 140
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            129,
+            130,
+            148
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Negative Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 61,
+      "type": "SaveVideo",
+      "pos": [
+        1658.5662841796875,
+        215.62408447265625
+      ],
+      "size": [
+        695.2254028320312,
+        820
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 132
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "WanVideo2_2_T2V_Lightning",
+        "mp4",
+        "h264"
+      ]
+    },
+    {
+      "id": 75,
+      "type": "SaveVideo",
+      "pos": [
+        2433.331787109375,
+        183.8079376220703
+      ],
+      "size": [
+        1061.3280029296875,
+        935.4154052734375
+      ],
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 142
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "WanVideo2_2_T2V_Lightning",
+        "mp4",
+        "h264"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        441.0313415527344,
+        581.4893188476562
+      ],
+      "size": [
+        422.84503173828125,
+        164.31304931640625
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 139
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            127,
+            128
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "The hero starship approaches a vast ringed gas giant through sparse debris, anodized alloy and painted composites showing fine micrometeorite pitting and streaking as guidance lights tick along the spine. The planet’s bands give a motivated cool rim while deep space stays neutral; ice fragments provide clean parallax. Motion is constant‑velocity and weighty: tiny attitude corrections only; brief thruster puffs hold vector with zero overshoot. Use a wide establishing then a slow, tripod‑steady forward dolly—no easing. Engine exhaust reads as high‑temperature plume with 8–12Hz flicker, subtle heat‑shimmer and a soft ionization cone refracting the background; nozzle interiors show heat‑tinted Inconel. Lighting is physically plausible with inverse‑square falloff: planetary rim as key, soft bounce off the hull as fill. Neutral cinematic grade, cool low‑contrast tones, soft highlight roll‑off; 24–28mm feel for scale; center‑weighted composition. Premium live‑action photoreal; 180° shutter blur; subtle film grain; no stylization"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      113,
+      57,
+      0,
+      58,
+      3,
+      "LATENT"
+    ],
+    [
+      123,
+      55,
+      0,
+      58,
+      0,
+      "MODEL"
+    ],
+    [
+      124,
+      58,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      125,
+      54,
+      0,
+      57,
+      0,
+      "MODEL"
+    ],
+    [
+      126,
+      59,
+      0,
+      57,
+      3,
+      "LATENT"
+    ],
+    [
+      127,
+      6,
+      0,
+      57,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      128,
+      6,
+      0,
+      58,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      129,
+      7,
+      0,
+      57,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      130,
+      7,
+      0,
+      58,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      131,
+      8,
+      0,
+      60,
+      0,
+      "IMAGE"
+    ],
+    [
+      132,
+      60,
+      0,
+      61,
+      0,
+      "VIDEO"
+    ],
+    [
+      134,
+      67,
+      0,
+      54,
+      0,
+      "MODEL"
+    ],
+    [
+      136,
+      68,
+      0,
+      55,
+      0,
+      "MODEL"
+    ],
+    [
+      137,
+      70,
+      0,
+      67,
+      0,
+      "MODEL"
+    ],
+    [
+      138,
+      71,
+      0,
+      68,
+      0,
+      "MODEL"
+    ],
+    [
+      139,
+      73,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      140,
+      73,
+      0,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      141,
+      72,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      142,
+      74,
+      0,
+      75,
+      0,
+      "VIDEO"
+    ],
+    [
+      143,
+      76,
+      0,
+      74,
+      0,
+      "IMAGE"
+    ],
+    [
+      144,
+      8,
+      0,
+      76,
+      0,
+      "IMAGE"
+    ],
+    [
+      145,
+      58,
+      0,
+      77,
+      0,
+      "*"
+    ],
+    [
+      146,
+      67,
+      0,
+      79,
+      0,
+      "*"
+    ],
+    [
+      147,
+      68,
+      0,
+      78,
+      0,
+      "*"
+    ],
+    [
+      148,
+      7,
+      0,
+      80,
+      0,
+      "*"
+    ],
+    [
+      149,
+      74,
+      0,
+      81,
+      0,
+      "*"
+    ],
+    [
+      150,
+      82,
+      0,
+      83,
+      0,
+      "OLLAMA_CONNECTIVITY"
+    ],
+    [
+      151,
+      83,
+      0,
+      84,
+      0,
+      "STRING"
+    ],
+    [
+      153,
+      83,
+      1,
+      85,
+      0,
+      "STRING"
+    ],
+    [
+      154,
+      60,
+      0,
+      86,
+      0,
+      "*"
+    ],
+    [
+      156,
+      88,
+      0,
+      83,
+      1,
+      "OLLAMA_OPTIONS"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Step1 - Load models",
+      "bounding": [
+        20,
+        -150,
+        822.4443359375,
+        578.7847900390625
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Step2 - Video size",
+      "bounding": [
+        20,
+        450,
+        367.5572814941406,
+        222.82713317871094
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "Step3 Prompt",
+      "bounding": [
+        416.6974792480469,
+        452.1065673828125,
+        476.67596435546875,
+        634.8471069335938
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "Ollama Vision t2v",
+      "bounding": [
+        -1868.0855712890625,
+        -148.72950744628906,
+        1828.5682373046875,
+        870.6209106445312
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.4548446463862671,
+      "offset": [
+        2058.5655017162735,
+        264.79973388497115
+      ]
+    },
+    "frontendVersion": "1.26.1",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
